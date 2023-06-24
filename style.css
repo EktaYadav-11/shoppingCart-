@@ -1,0 +1,118 @@
+
+
+body{
+background-color: blanchedalmond;
+}
+
+.box {
+    width: 100%;
+    margin: auto;
+    transition: 0.5s;
+}
+header{
+    display: grid;
+    margin-top: 50px;
+    grid-template-columns: 1fr 50px;;
+
+}
+header .shopping{
+    position:relative;
+    text-align: right;
+}
+
+header .shopping img{
+    width:40px;
+}
+
+header .shopping span{
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    top: -5px;
+    left: 80%;
+    padding: 3px 10px;
+}
+
+.list{
+    display: grid;
+    grid-template-columns: repeat(3 ,1fr);
+    column-gap: 20px;
+    row-gap:20px;
+    margin-top:50px;
+    
+}
+
+.card{
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 500px;
+    background-color: grey;
+height: 100vh;
+transition: 0.5s;
+}
+
+.card h1{
+    color: yellow;
+    font-weight: 100;
+    margin: 0;
+    padding: 0 20px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+
+}
+
+.card .checkout{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+ .card .checkout div{
+    background-color: yellow;
+    width: 100%;
+    height: 70px;
+    display: felx;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    align-items: center;
+ }
+
+ .card .checkout div:nth-child(2){
+    background-color: black;
+    color: aliceblue;
+ }
+
+ .active .card{
+    left: calc(100% - 500px);
+
+ }
+
+.active .box{
+    transform: translateX(-200px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

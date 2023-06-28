@@ -3,7 +3,7 @@ let closeShopping = document.querySelector(".closeShopping");
 let list = document.querySelector('.list');
 let listCard = document.querySelector('.listCard');
 let body = document.querySelector('body');
-let total = document.querySelector('total');
+let total = document.querySelector('.total');
 let quantity = document.querySelector('.quantity');
 
 openshopping.addEventListener('click' , ()=>{
@@ -57,7 +57,7 @@ let product= [
 
     },
 ];
-let listcards =[]; 
+let listCards =[]; 
 function initApp(){
     product.forEach((value, key)=> {
         let newDiv = document.createElement('div');
@@ -74,9 +74,9 @@ function initApp(){
 }
 initApp();
 function addToCard(key){
-    if (listCard[key]==null){
-        listCard[key]= product[key];
-        listCard[key].quantity=1;
+    if (listCards[key]==null){
+        listCards[key]= product[key];
+        listCards[key].quantity=1;
     }
     reloadCard();
 }
@@ -85,7 +85,7 @@ function reloadCard(){
     listCard.innerHTML ='';
     let count = 0;
     let totalPrice = 0;
-    listCard.forEach((value, key) => {
+    listCards.forEach((value, key) => {
         totalPrice = totalPrice + value.price;
         count = count + value.quantity;
          
@@ -111,11 +111,11 @@ function reloadCard(){
 }
 function changeQuantity(key, quantity){
     if(quantity == 0){
-        delete listCard[key];
+        delete listCards[key];
 
     }else{
-        listCard[key].quantity = quantity;
-        listCard[key].price = quantity*product[key].price;
+        listCards[key].quantity = quantity;
+        listCards[key].price = quantity*product[key].price;
     }
 
     reloadCard();

@@ -1,7 +1,7 @@
 let openshopping = document.querySelector(".shopping");
 let closeShopping = document.querySelector(".closeShopping");
 let list = document.querySelector('.list');
-let listcard = document.querySelector('.listcard');
+let listCard = document.querySelector('.listCard');
 let body = document.querySelector('body');
 let total = document.querySelector('total');
 let quantity = document.querySelector('.quantity');
@@ -17,7 +17,7 @@ let product= [
     {
         id: 1,
         name: 'product name 1',
-        image: 'img1.jpg',
+        image: 'img 7.jpg',
         price:100
 
     },
@@ -57,7 +57,7 @@ let product= [
 
     },
 ];
-// let listcards =[];
+let listcards =[]; 
 function initApp(){
     product.forEach((value, key)=> {
         let newDiv = document.createElement('div');
@@ -73,3 +73,51 @@ function initApp(){
     })
 }
 initApp();
+function addToCard(key){
+    if (listCard[key]==null){
+        listCard[key]= product[key];
+        listCard[key].quantity=1;
+    }
+    reloadCard();
+}
+
+function reloadCard(){
+    listCard.innerHTML ='';
+    let count = 0;
+    let totalPrice = 0;
+    listCard.forEach((value, key) => {
+        totalPrice = totalPrice + value.price;
+        count = count + value.quantity;
+         
+        if(value != null){
+            let newDiv = document.createElement('li');
+            newDiv.innerHTML =`
+            <div><img src="image/${value.image}"/></div>
+            <div>${value.name}</div>
+            <div>${value.price.toLocaleString()}</div>            
+            
+            <div>
+            <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
+            <div class="count">${value.quantity}</div>
+            <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
+            </div>
+            `;
+            listCard.appendChild(newDiv);
+        }
+    })
+    total.innerText = totalPrice.toLocaleString();
+    quantity.innerText= count;
+
+}
+function changeQuantity(key, quantity){
+    if(quantity == 0){
+        delete listCard[key];
+
+    }else{
+        listCard[key].quantity = quantity;
+        listCard[key].price = quantity*product[key].price;
+    }
+
+    reloadCard();
+
+}
